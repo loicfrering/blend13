@@ -1,5 +1,7 @@
 (function() {
 
+  window.presentation = new Presentation();
+
   // backbone-binding
 
   (function() {
