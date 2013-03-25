@@ -38,6 +38,42 @@
         <li><i class="icon-legal"></i>    MIT</li>
       </ul>
     </section>
+    <section class="backbone" id="backbone-binding">
+      <div class="app"></div>
+    </section>
+    <section class="backbone">
+<pre><code class="javascript">var PromptView = Backbone.View.extend({
+  events: { keyup: 'change' },
+  render: function() {
+    this.$el.html('&lt;input id="name" type="text" placeholder="Name..." /&gt;');
+    return this;
+  },
+  change: function() {
+    this.model.set('name', this.$('#name').val());
+  }
+});
+</code></pre>
+    </section>
+    <section class="backbone">
+<pre><code>var HelloView = Backbone.View.extend({
+  initialize: function() {
+    this.listenTo(this.model, 'change', this.render);
+  },
+  render: function() {
+    this.$el.html('Hello ' + (this.model.get('name') || ''));
+    return this;
+  }
+});
+</code></pre>
+    </section>
+    <section class="backbone">
+<pre><code>var user = new Backbone.Model();
+var promptView = new PromptView({model: user});
+var helloView = new HelloView({model: user});
+$('#backbone-binding .app').append(promptView.render().el)
+                           .append(helloView.render().el);
+</code></pre>
+    </section>
     <section class="ember">
       <h1>Ember</h1>
     </section>
@@ -73,5 +109,10 @@
   <script src="components/hammerjs/dist/hammer.min.js"></script>
   <script src="js/libs/highlight.min.js"></script>
   <script src="js/presentation.js"></script>
+
+  <script src="components/underscore/underscore-min.js"></script>
+  <script src="components/backbone/backbone-min.js"></script>
+
+  <script src="js/mixit.js"></script>
 </body>
 </html>
