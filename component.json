@@ -16,6 +16,7 @@
     "font-awesome": "~3.0.2",
     "backbone": "~1.0.0",
     "underscore": "~1.4.4",
-    "ember": "~1.0.0-rc.1"
+    "ember": "~1.0.0-rc.1",
+    "angular": "~1.0.5"
   }
 }
