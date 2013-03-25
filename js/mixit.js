@@ -33,4 +33,25 @@
 
   })();
 
+  // ember-binding
+
+  (function() {
+
+    var AppView = Ember.View.extend({
+      template: Ember.Handlebars.compile(
+        '<div>{{view Ember.TextField valueBinding="name" placeholder="Name..."}}</div>' +
+        '<div>Hello {{name}}!</div>'
+      )
+    });
+
+    var user = Ember.Object.create();
+    var appView = AppView.create({controller: user});
+    appView.appendTo('#ember-binding .app');
+
+    Ember.EventDispatcher.create({
+      rootElement: '#ember-binding .app'
+    }).setup();
+
+  })();
+
 })();
