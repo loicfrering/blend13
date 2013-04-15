@@ -25,6 +25,8 @@
         <li><i class="icon-envelope"></i>   <a href="mailto:loic.frering@gmail.com" title="loic.frering@gmail.com">loic.frering@gmail.com</a></li>
       </ul>
     </section>
+
+    <!-- ID Cards -->
     <section class="backbone">
       <h1>Backbone</h1>
     </section>
@@ -39,42 +41,6 @@
         <li><i class="icon-legal"></i>    MIT</li>
       </ul>
     </section>
-    <section class="backbone" id="backbone-binding">
-      <div class="app"></div>
-    </section>
-    <section class="backbone">
-<pre><code class="javascript">var PromptView = Backbone.View.extend({
-  events: { keyup: 'change' },
-  render: function() {
-    this.$el.html('&lt;input id="name" type="text" placeholder="Name..." /&gt;');
-    return this;
-  },
-  change: function() {
-    this.model.set('name', this.$('#name').val());
-  }
-});
-</code></pre>
-    </section>
-    <section class="backbone">
-<pre><code>var HelloView = Backbone.View.extend({
-  initialize: function() {
-    this.listenTo(this.model, 'change', this.render);
-  },
-  render: function() {
-    this.$el.html('Hello ' + (this.model.get('name') || ''));
-    return this;
-  }
-});
-</code></pre>
-    </section>
-    <section class="backbone">
-<pre><code>var user = new Backbone.Model();
-var promptView = new PromptView({model: user});
-var helloView = new HelloView({model: user});
-$('#backbone-binding .app').append(promptView.render().el)
-                           .append(helloView.render().el);
-</code></pre>
-    </section>
     <section class="ember">
       <h1>Ember</h1>
     </section>
@@ -83,35 +49,11 @@ $('#backbone-binding .app').append(promptView.render().el)
         <li><i class="icon-user"></i>     Yehuda Katz &amp; Tom Dale</li>
         <li><i class="icon-money"></i>    Tilde Inc.</li>
         <li><i class="icon-suitcase"></i> jQuery &amp; Handlebars</li>
-        <li><i class="icon-tag"></i>      1.0.0-rc.1</li>
+        <li><i class="icon-tag"></i>      1.0.0-rc.2</li>
         <li><i class="icon-calendar"></i> décembre 2011</li>
         <li><i class="icon-download"></i> 726 ko dev / 49 ko prod</li>
         <li><i class="icon-legal"></i>    MIT</li>
       </ul>
-    </section>
-    <section class="ember" id="ember-binding">
-      <div class="app"></div>
-    </section>
-    <section class="ember">
-<pre><code class="javascript">var AppView = Ember.View.extend({
-  template: Ember.Handlebars.compile(
-    '&lt;div&gt;{{view Ember.TextField valueBinding="name" placeholder="Name..."}}&lt;/div&gt;' +
-    '&lt;div&gt;Hello {{name}}!&lt;/div&gt;'
-  )
-});
-</code></pre>
-    </section>
-    <section class="ember">
-<pre><code>var user = Ember.Object.create();
-var appView = AppView.create({controller: user});
-appView.appendTo('#ember-binding .app');
-</code></pre>
-    </section>
-    <section class="ember">
-<pre><code class="javascript">Ember.EventDispatcher.create({
-  rootElement: '#ember-binding .app'
-}).setup();
-</code></pre>
     </section>
     <section class="angular">
       <h1>Angular</h1>
@@ -127,6 +69,56 @@ appView.appendTo('#ember-binding .app');
         <li><i class="icon-legal"></i>    MIT</li>
       </ul>
     </section>
+
+    <!-- Binding -->
+    <section>
+      <h1>Binding</h1>
+    </section>
+    <section class="backbone" id="backbone-binding">
+      <div class="app"></div>
+    </section>
+    <section class="backbone">
+      <div>
+<pre><code class="javascript">var PromptView = Backbone.View.extend({
+  events: { keyup: 'change' },
+  render: function() {
+    this.$el.html('&lt;input id="name" type="text" /&gt;');
+    return this;
+  },
+  change: function() {
+    <strong>this.model.set('name', this.$('#name').val());</strong>
+  }
+});
+</code></pre>
+<pre><code>var HelloView = Backbone.View.extend({
+  initialize: function() {
+    <strong>this.listenTo(this.model, 'change', this.render);</strong>
+  },
+  render: function() {
+    this.$el.html('Hello ' + (this.model.get('name') || ''));
+    return this;
+  }
+});
+</code></pre>
+      </div>
+    </section>
+    <section class="ember" id="ember-binding">
+      <div class="app"></div>
+    </section>
+    <section class="ember">
+      <div>
+<pre><code class="javascript">var AppView = Ember.View.extend({
+  template: Ember.Handlebars.compile(
+    '&lt;div&gt;{{view Ember.TextField valueBinding="name"}}&lt;/div&gt;' +
+    '&lt;div&gt;Hello {{name}}!&lt;/div&gt;'
+  )
+});
+</code></pre>
+<pre><code>&lt;div&gt;{{view <strong>Ember.TextField valueBinding="name"</strong>}}&lt;/div&gt;
+&lt;div&gt;Hello {{name}}!&lt;/div&gt;
+</code></pre>
+      </div>
+    </section>
     <section class="angular" id="angular-binding">
       <div ng-app>
         <div><input type="text" ng-model="name" placeholder="Name..." /></div>
@@ -135,10 +127,47 @@ appView.appendTo('#ember-binding .app');
     </section>
     <section class="angular">
 <pre><code>&lt;div ng-app&gt;
-  &lt;div&gt;&lt;input type="text" ng-model="name" placeholder="Name..." /&gt;&lt;/div&gt;
+  &lt;div&gt;&lt;input type="text" ng-model="name" /&gt;&lt;/div&gt;
   &lt;div&gt;Hello {{name}}!&lt;/div&gt;
 &lt;/div&gt;
 </code></pre>
+    </section>
+
+    <!-- Object Model -->
+    <section>
+      <h1>Object Model</h1>
+    </section>
+    <section class="backbone">
+<pre><code>var HandlebarsView = Backbone.View.extend({
+  render: function() {
+    if (!_.isFunction(this.template)) {
+      this.template = Handlebars.compile(this.template);
+    }
+    this.$el.html(this.template(this.model || this.collection || {}));
+    return this;
+  }
+});
+
+var TaskView = HandlebarsView.extend({
+  render: function() {
+    console.log('Rendering...');
+    TaskView.__super__.render.apply(this);
+  }
+});
+</code></pre>
+    </section>
+    <section class="ember">
+      <h1>Classes and Inheritance</h1>
+    </section>
+    <section class="ember">
+      <h1>Computed Properties</h1>
+      <p>Faire quelque chose avec 1 hour ago...</p>
+    </section>
+    <section class="ember">
+      <h1>Observers</h1>
+    </section>
+    <section class="ember">
+      <h1>Bindings</h1>
     </section>
   </div>
 
