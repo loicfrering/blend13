@@ -56,4 +56,33 @@
 
   })();
 
+  // ember-object-classes
+
+  (function() {
+
+    var Task = Ember.Object.extend({
+      done: false,
+      isDone: function() {
+        return this.get('done');
+      },
+      summary: function(what) {
+        return '[' + (this.isDone() ? 'X' : ' ') + '] ' + this.get('title');
+      }.property('done', 'title')
+    });
+
+    var User = Ember.Object.extend({
+      remainingTasks: function() {
+        return this.get('tasks').filterProperty('done', false).get('length');
+      }.property('tasks.@each.done')
+    });
+
+    var task = Task.create({title: 'Go to Mix-IT'});
+    //task.set('done', true);
+    console.log(task.get('summary'));
+
+    var user = User.create();
+    user.set('tasks', [task]);
+    console.log('Remaining tasks: ' + user.get('remainingTasks'));
+  })();
+
 })();
