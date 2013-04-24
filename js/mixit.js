@@ -62,11 +62,15 @@
 
     var Task = Ember.Object.extend({
       done: false,
-      isDone: function() {
-        return this.get('done');
+      init: function() {
+        this.createdAt = new Date();
       },
+      createdSince: function() {
+        //return moment(this.get('createdAt')).since();
+        return 'just now';
+      }.property('createdAt'),
       summary: function(what) {
-        return '[' + (this.isDone() ? 'X' : ' ') + '] ' + this.get('title');
+        return '[' + (this.get('done') ? 'X' : ' ') + '] ' + this.get('title') + ' (created ' + this.get('createdSince') + ')';
       }.property('done', 'title')
     });
 
@@ -76,12 +80,15 @@
       }.property('tasks.@each.done')
     });
 
-    var task = Task.create({title: 'Go to Mix-IT'});
-    //task.set('done', true);
-    console.log(task.get('summary'));
+    var task1 = Task.create({title: 'Go to Mix-IT'});
+    task1.set('done', true);
+    console.log(task1.get('summary'));
+
+    var task2 = Task.create({title: 'Enjoy the party!'});
+    console.log(task2.get('summary'));
 
     var user = User.create();
-    user.set('tasks', [task]);
+    user.set('tasks', [task1, task2]);
     console.log('Remaining tasks: ' + user.get('remainingTasks'));
   })();
 
