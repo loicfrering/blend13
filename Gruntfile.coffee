@@ -26,7 +26,7 @@ module.exports = (grunt) ->
         files: 'coffee/presentation.coffee'
         tasks: 'coffee'
       less:
-        files: 'less/presentation.less'
+        files: 'less/*.less'
         tasks: 'less'
   )
 

@@ -25,6 +25,9 @@
         <li><i class="icon-envelope"></i>   <a href="mailto:loic.frering@gmail.com" title="loic.frering@gmail.com">loic.frering@gmail.com</a></li>
       </ul>
     </section>
+    <section>
+      <h1>Backbone, Ember et Angular sont dans un bateau...</h1>
+    </section>
 
     <!-- ID Cards -->
     <section class="backbone">
@@ -37,7 +40,7 @@
         <li><i class="icon-suitcase"></i> jQuery/Zepto &amp; Underscore.js</li>
         <li><i class="icon-tag"></i>      1.0.0</li>
         <li><i class="icon-calendar"></i> octobre 2010</li>
-        <li><i class="icon-download"></i> 56 ko dev / 6,3 ko prod</li>
+        <li><i class="icon-download"></i> 58 kb dev / 6,3 kb prod</li>
         <li><i class="icon-legal"></i>    MIT</li>
       </ul>
     </section>
@@ -52,9 +55,9 @@
         <li><i class="icon-user"></i>     Yehuda Katz &amp; Tom Dale</li>
         <li><i class="icon-money"></i>    Tilde Inc.</li>
         <li><i class="icon-suitcase"></i> jQuery &amp; Handlebars</li>
-        <li><i class="icon-tag"></i>      1.0.0-rc.2</li>
+        <li><i class="icon-tag"></i>      1.0.0-rc.3</li>
         <li><i class="icon-calendar"></i> décembre 2011</li>
-        <li><i class="icon-download"></i> 726 ko dev / 49 ko prod</li>
+        <li><i class="icon-download"></i> 774 kb dev / 51 kb prod</li>
         <li><i class="icon-legal"></i>    MIT</li>
       </ul>
     </section>
@@ -69,9 +72,9 @@
         <li><i class="icon-user"></i>     Igor Minár &amp; Vojta Jína</li>
         <li><i class="icon-money"></i>    Google</li>
         <li><i class="icon-suitcase"></i> </li>
-        <li><i class="icon-tag"></i>      1.0.5</li>
+        <li><i class="icon-tag"></i>      1.0.6</li>
         <li><i class="icon-calendar"></i> 2009</li>
-        <li><i class="icon-download"></i> 477 ko dev / 32 ko prod</li>
+        <li><i class="icon-download"></i> 479 kb dev / 32 kb prod</li>
         <li><i class="icon-legal"></i>    MIT</li>
       </ul>
     </section>
@@ -92,20 +95,20 @@
       </ul>
     </section>
     <section class="backbone">
-<pre><code>var HandlebarsView = Backbone.View.extend({
+<pre><code>var HandlebarsView = <strong>Backbone.View.extend</strong>({
   render: function() {
     if (!_.isFunction(this.template)) {
-      this.template = Handlebars.compile(this.template);
+      this.tmpl = Handlebars.compile(this.tmpl);
     }
-    this.$el.html(this.template(this.model||this.collection||{}));
+    this.$el.html(this.tmpl(this.model||this.collection||{}));
     return this;
   }
 });
 
-var TaskView = HandlebarsView.extend({
+var TaskView = <strong>HandlebarsView.extend</strong>({
   render: function() {
     console.log('Rendering...');
-    TaskView.__super__.render.apply(this);
+    <strong>TaskView.__super__.render.apply(this);</strong>
   }
 });
 </code></pre>
@@ -121,182 +124,68 @@ var TaskView = HandlebarsView.extend({
       </ul>
     </section>
     <section class="ember todo">
-<pre><code>var Task = Ember.Object.extend({
+<pre><code>var Task = <strong>Ember.Object.extend</strong>({
   done: false,
   init: function() {
     this.createdAt = new Date();
   },
   createdSince: function() {
-    return moment(this.get('createdAt')).since();
-  }.property('createdAt')
+    return moment(this.get('createdAt')).fromNow();
+  }<strong>.property('createdAt')</strong>
 });
 
 var User = Ember.Object.extend({
   remainingTasks: function() {
     return this.get('tasks').filterProperty('done', false)
                             .get('length');
-  }.property('tasks.@each.done')
+  }<strong>.property('tasks.@each.done')</strong>
 });
 </code></pre>
     </section>
     <section class="ember">
-<pre><code>var task1 = Task.create({title: 'Go to Mix-IT'});
-task1.set('done', true);
+<pre><code>var task1 = <strong>Task.create({title: 'Go to Mix-IT'});</strong>
+task1<strong>.set('done', true)</strong>;
 console.log(task1.get('summary'));
 
 var task2 = Task.create({title: 'Enjoy the party!'});
-console.log(task2.get('summary'));
+console.log(task2<strong>.get('summary')</strong>);
 
 var user = User.create();
 user.set('tasks', [task1, task2]);
-console.log('Remaining tasks: ' + user.get('remainingTasks'));
+console.log('Remaining tasks: ' + user<strong>.get('remainingTasks')</strong>);
 </code></pre>
-    </section>
-    <section class="angular">
-      <h1>Scope Inheritance</h1>
     </section>
     <section class="angular">
       <h1>Services &amp; Dependency Injection</h1>
-    </section>
-
-    <!-- Binding -->
-    <section>
-      <h1>Binding &amp; Events</h1>
-    </section>
-    <section>
-      <h1>Binding</h1>
       <ul>
-        <li>Connecting object properties</li>
-        <li>Data synchronization between data and view</li>
+        <li>OMG!! Dependency Injection!!!</li>
+        <li>Separation of concerns</li>
+        <li>Testability</li>
       </ul>
     </section>
     <section>
-      <div ng-app>
-        <div><input type="text" ng-model="name" placeholder="Name..." /></div>
-        <div>Hello {{name}}!</div>
-      </div>
-    </section>
-    <section class="backbone" id="backbone-binding">
-      <h1>Binding</h1>
-      <ul>
-        <li>No automatic binding</li>
-        <li>Manually wiring through events</li>
-      </ul>
-    </section>
-    <section class="backbone">
-      <h1>Model Events</h1>
-      <ul>
-        <li>change</li>
-        <li>change:[attribute]</li>
-        <li>destroy</li>
-        <li>sync</li>
-      </ul>
-    </section>
-    <section class="backbone">
-      <h1>Collection Events</h1>
-      <ul>
-        <li>add</li>
-        <li>remove</li>
-        <li>reset</li>
-        <li>sync</li>
-      </ul>
-    </section>
-    <section class="backbone">
-      <h1>Events</h1>
-      <ul>
-        <li>
-          Backbone.Model
-          <ul>
-            <li>model.get &amp; model.set</li>
-            <li>model.destroy</li>
-            <li>model.fetch &amp; model.save</li>
-          </ul>
-        </li>
-        <li>
-          Backbone.Collection
-          <ul>
-            <li>collection.add &amp; collection.remove</li>
-            <li>collection.reset</li>
-            <li>collection.fetch &amp; collection.sync</li>
-          </ul>
-        </li>
-      </ul>
-    </section>
-    <section class="backbone">
-      <div>
-<pre><code class="javascript">var PromptView = Backbone.View.extend({
-  events: { keyup: 'change' },
-  render: function() {
-    this.$el.html('&lt;input id="name" type="text" /&gt;');
-    return this;
-  },
-  change: function() {
-    <strong>this.model.set('name', this.$('#name').val());</strong>
-  }
-});
+<pre><code>
+module.factory('tasks', ['$resource', function($resource) {
+  return $resource('http://localhost\\:3000/tasks/:id', {}, {
+    query: {method: 'GET', isArray: false}
+  });
+}]);
 </code></pre>
-<pre><code>var HelloView = Backbone.View.extend({
-  initialize: function() {
-    <strong>this.listenTo(this.model, 'change', this.render);</strong>
-  },
-  render: function() {
-    this.$el.html('Hello ' + (this.model.get('name') || ''));
-    return this;
-  }
-});
+<pre><code>var TasksCtrl = ['$scope', 'tasks', function($scope, tasks) {
+  tasks.active();
+  tasks.query({}, function(response) {
+    $scope.tasks = response.tasks;
+  });
+}];
 </code></pre>
-      </div>
     </section>
-    <section class="ember">
-      <h1>Binding</h1>
+    <section>
+      <h1>Object Model</h1>
       <ul>
-        <li>Two way data-binding</li>
-        <li>Built in the core of Ember.Object</li>
-        <li>Surgical precision</li>
+        <li>Backbone brings simple inheritance</li>
+        <li>Angular works with plain old JavaScript</li>
+        <li>Ember has a powerful Object Model</li>
       </ul>
-    </section>
-    <section class="ember todo">
-      <h1>Metamorph</h1>
-      <ul>
-        <li>Update DOM elements</li>
-        <li>Integrated into Ember &amp; Handlebars</li>
-        <li>DOM portions encapsulated by &lt;script&gt; tags</li>
-      </ul>
-    </section>
-    <section class="ember">
-      <div>
-<pre><code class="javascript">var AppView = Ember.View.extend({
-  template: $('#ember-binding-template').html()
-});
-</code></pre>
-<pre><code>&lt;div&gt;{{view <strong>Ember.TextField valueBinding="name"</strong>}}&lt;/div&gt;
-&lt;div&gt;Hello {{name}}!&lt;/div&gt;
-</code></pre>
-      </div>
-    </section>
-    <section class="angular">
-      <h1>Binding</h1>
-      <ul>
-        <li>Two way data-binding</li>
-        <li>Model managed in hierarchical scopes</li>
-        <li>Scope is the glue between controllers and views</li>
-        <li>Working on plain JavaScript objects</li>
-      </ul>
-    </section>
-    <section class="angular">
-      <h1>Dirty Checking</h1>
-      <ul>
-        <li>Angular execution context: $apply(fn)</li>
-        <li>Entering the digest loop once the fn function executed</li>
-        <li>Search for modification in scopes to update the DOM accordingly</li>
-      </ul>
-    </section>
-    <section class="angular">
-<pre><code>&lt;div ng-app&gt;
-  &lt;div&gt;&lt;input type="text" ng-model="name" /&gt;&lt;/div&gt;
-  &lt;div&gt;Hello {{name}}!&lt;/div&gt;
-&lt;/div&gt;
-</code></pre>
     </section>
 
     <!-- MVwhatever -->
@@ -374,23 +263,47 @@ console.log('Remaining tasks: ' + user.get('remainingTasks'));
       <h1>Controller</h1>
       <ul>
         <li>No explicit controller</li>
-        <li>Route actions do the job</li>
+        <li>Route actions &amp; views do the job</li>
       </ul>
+    </section>
+    <section class="backbone">
+<pre><code>var TaskFormView = HandlebarsView.extend({
+  template: $('#task-form-template').html(),
+  events: {
+    'submit form': 'save'
+  },
+  save: function() {
+    <strong>this.model.save</strong>({
+      title: this.$('#title').val(),
+      description: this.$('#description').val()
+    }, {
+      success: _.bind(function() {
+        Backbone.history.navigate("#task/" +
+          this.model.get('id'), true);
+      }, this)
+    });
+    return false;
+  }
+});
+</code></pre>
     </section>
     <section class="ember">
       <h1>Model</h1>
       <ul>
-        <li>Benefit from all the features of Ember.Object</li>
+        <li>Features of Ember.Object</li>
         <li>Sync with API (with ember-data)</li>
       </ul>
     </section>
     <section class="ember">
       <h1>View</h1>
       <ul>
-        <li>Templating with Handlebars</li>
+        <li>String based templating with Handlebars</li>
         <li>Handle user interactions</li>
-        <li>Generally not created</li>
+        <li>Generally automatically created</li>
       </ul>
+    </section>
+    <section class="ember">
+      CODE
     </section>
     <section class="ember">
       <h1>Controller</h1>
@@ -431,6 +344,179 @@ console.log('Remaining tasks: ' + user.get('remainingTasks'));
         <li>Populates the scope</li>
       </ul>
     </section>
+    <section>
+      <h1>MV*</h1>
+      <ul>
+        <li>A basic structure with Backbone</li>
+        <li>A full MVC with string based templates with Ember</li>
+        <li>DOM based templating with Angular</li>
+      </ul>
+    </section>
+
+    <!-- Binding -->
+    <section>
+      <h1>Binding &amp; Events</h1>
+    </section>
+    <section>
+      <h1>Binding</h1>
+      <ul>
+        <li>Connecting object properties</li>
+        <li>Data synchronization between data and view</li>
+      </ul>
+    </section>
+    <section>
+      <div ng-app>
+        <div><input type="text" ng-model="name" placeholder="Name..." /></div>
+        <div>Hello {{name}}!</div>
+      </div>
+    </section>
+    <section class="backbone" id="backbone-binding">
+      <h1>Binding</h1>
+      <ul>
+        <li>No automatic binding</li>
+        <li>Manual wiring through events</li>
+      </ul>
+    </section>
+    <section class="backbone">
+      <h1>Model Events</h1>
+      <ul>
+        <li>change</li>
+        <li>change:[attribute]</li>
+        <li>destroy</li>
+        <li>sync</li>
+      </ul>
+    </section>
+    <section class="backbone">
+      <h1>Collection Events</h1>
+      <ul>
+        <li>add</li>
+        <li>remove</li>
+        <li>reset</li>
+        <li>sync</li>
+      </ul>
+    </section>
+    <section class="backbone">
+      <h1>Events</h1>
+      <ul>
+        <li>
+          Backbone.Model
+          <ul>
+            <li>model.get &amp; model.set</li>
+            <li>model.destroy</li>
+            <li>model.fetch &amp; model.save</li>
+          </ul>
+        </li>
+        <li>
+          Backbone.Collection
+          <ul>
+            <li>collection.add &amp; collection.remove</li>
+            <li>collection.reset</li>
+            <li>collection.fetch &amp; collection.sync</li>
+          </ul>
+        </li>
+      </ul>
+    </section>
+    <section class="backbone">
+      <div>
+<pre><code class="javascript">var PromptView = Backbone.View.extend({
+  events: { keyup: 'change' },
+  render: function() {
+    this.$el.html('&lt;input id="name" type="text" /&gt;');
+    return this;
+  },
+  change: function() {
+    <strong>this.model.set('name', this.$('#name').val());</strong>
+  }
+});
+</code></pre>
+<pre><code>var HelloView = Backbone.View.extend({
+  initialize: function() {
+    <strong>this.listenTo(this.model, 'change', this.render);</strong>
+  },
+  render: function() {
+    this.$el.html('Hello ' + (this.model.get('name') || ''));
+    return this;
+  }
+});
+</code></pre>
+      </div>
+    </section>
+    <section class="ember">
+      <h1>Binding</h1>
+      <ul>
+        <li>Two way data-binding</li>
+        <li>Built in the core of Ember.Object</li>
+        <li>Surgical precision</li>
+      </ul>
+    </section>
+    <section class="ember">
+      <h1>Handlebars</h1>
+    </section>
+    <section class="ember todo">
+      <h1>Metamorph</h1>
+      <ul>
+        <li>Update DOM inserted from a generated HTML string</li>
+        <li>Integrated into Ember &amp; Handlebars</li>
+        <li>DOM portions encapsulated by &lt;script&gt; tags</li>
+      </ul>
+    </section>
+    <section class="ember">
+<pre><code class="html">&lt;ul&gt;
+  <strong>&lt;script id="metamorph-0-start"&gt;&lt;/script&gt;</strong>
+  <strong>&lt;script id="metamorph-2-start"&gt;&lt;/script&gt;</strong>
+  &lt;li class="active" data-bindattr-1="1"&gt;
+    &lt;h1&gt;
+      &lt;a id="ember378" class="active" href="#/tasks/1"&gt;
+        <strong>&lt;script id="metamorph-4-start"&gt;&lt;/script&gt;</strong>
+        Task1
+        <strong>&lt;script id="metamorph-4-end"&gt;&lt;/script&gt;</strong>
+      &lt;/a&gt;
+    &lt;/h1&gt;
+  &lt;/li&gt;
+  <strong>&lt;script id="metamorph-2-end"&gt;&lt;/script&gt;</strong>
+  <strong>&lt;script id="metamorph-3-start"&gt;&lt;/script&gt;</strong>
+  &lt;li class="" data-bindattr-2="2"&gt;...&lt;/li&gt;
+  <strong>&lt;script id="metamorph-3-end"&gt;&lt;/script&gt;</strong>
+  <strong>&lt;script id="metamorph-0-end"&gt;&lt;/script&gt;</strong>
+  &lt;li&gt;...&lt;/li&gt;
+&lt;/ul&gt;
+</code></pre>
+    </section>
+    <section class="ember">
+      <div>
+<pre><code class="javascript">var AppView = Ember.View.extend({
+  template: $('#ember-binding-template').html()
+});
+</code></pre>
+<pre><code>&lt;div&gt;{{view <strong>Ember.TextField valueBinding="name"</strong>}}&lt;/div&gt;
+&lt;div&gt;Hello {{name}}!&lt;/div&gt;
+</code></pre>
+      </div>
+    </section>
+    <section class="angular">
+      <h1>Binding</h1>
+      <ul>
+        <li>Two way data-binding</li>
+        <li>Model managed in hierarchical scopes</li>
+        <li>Scope is the glue between controllers and views</li>
+        <li>Working on plain JavaScript objects</li>
+      </ul>
+    </section>
+    <section class="angular">
+      <h1>Dirty Checking</h1>
+      <ul>
+        <li>Angular execution context: $apply(fn)</li>
+        <li>Entering the digest loop once the fn function executed</li>
+        <li>Search for modification in scopes to update the DOM accordingly</li>
+      </ul>
+    </section>
+    <section class="angular">
+<pre><code>&lt;div ng-app&gt;
+  &lt;div&gt;&lt;input type="text" ng-model="name" /&gt;&lt;/div&gt;
+  &lt;div&gt;Hello {{name}}!&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+    </section>
 
     <!-- Routing -->
     <section>
@@ -460,16 +546,7 @@ console.log('Remaining tasks: ' + user.get('remainingTasks'));
       </ul>
     </section>
     <section class="backbone">
-      <h1>Routing</h1>
-      <ul>
-        <li>Callback triggered when a route match</li>
-        <li>Retrieve model or collection</li>
-        <li>Instantiate and render the view</li>
-        <li>Attach the result to the DOM</li>
-      </ul>
-    </section>
-    <section class="backbone">
-<pre><code>var TasksRouter = Backbone.Router.extend({
+<pre><code class="javascript">var TasksRouter = Backbone.Router.extend({
   routes: {
     '':                'index',
     'tasks':           'list',
@@ -551,7 +628,7 @@ console.log('Remaining tasks: ' + user.get('remainingTasks'));
   &lt;ul&gt;
     {{#each task in model}}
       &lt;li {{bindAttr class="task.active:active"}}&gt;
-        &lt;h1&gt;{{#linkTo "tasks.show" task}}{{task.title}}{{/linkTo}}&lt;/h1&gt;
+        &lt;h1&gt;<strong>{{#linkTo "tasks.show" task}}{{task.title}}{{/linkTo}}</strong>&lt;/h1&gt;
       &lt;/li&gt;
     {{/each}}
     &lt;li&gt;{{#linkTo "tasks.new"}}New task...{{/linkTo}}&lt;/li&gt;
@@ -561,10 +638,27 @@ console.log('Remaining tasks: ' + user.get('remainingTasks'));
 </code></pre>
     </section>
     <section class="ember">
-<pre><code>Tasks.TasksShowRoute = Ember.Route.extend({
-  setupController: function(controller, task) {
+<pre><code>Tasks.TasksNewRoute = Ember.Route.extend({
+  <strong>renderTemplate:</strong> function() {
+    this.render('tasks/form');
+  },
+  <strong>model:</strong> function() {
+    return Tasks.Task.createRecord({
+      title: 'New Task',
+      description: 'Desc'
+    });
+  },
+  <strong>setupController:</strong> function(controller, task) {
     Tasks.Task.active(task);
     controller.set('content', task);
+  },
+  <strong>events:</strong> {
+    save: function(task) {
+      task.one('didCreate', this, function() {
+        this.transitionTo('tasks.show', task);
+      });
+      this.get('store').commit();
+    }
   }
 });
 </code></pre>
