@@ -399,10 +399,10 @@ var TasksCtrl = ['$scope', <strong>'Task'</strong>, function($scope, <strong>Tas
         <li>Data synchronization between data and view</li>
       </ul>
     </section>
-    <section>
-      <div ng-app>
+    <section id="binding-demo">
+      <div>
         <div><input type="text" ng-model="name" placeholder="Name..." /></div>
-        <div>Hello {{name}}!</div>
+        <div>Hello <span></span>!</div>
       </div>
     </section>
     <section class="backbone" id="backbone-binding">
@@ -893,12 +893,6 @@ var TaskNewCtrl = ['$scope', '$location', <strong>'Task'</strong>,
   <script src="components/hammerjs/dist/hammer.min.js"></script>
   <script src="js/libs/highlight.min.js"></script>
   <script src="js/presentation.js"></script>
-
-  <script src="components/underscore/underscore-min.js"></script>
-  <script src="components/backbone/backbone-min.js"></script>
-  <script src="components/handlebars/handlebars.js"></script>
-  <script src="components/ember/ember.min.js"></script>
-  <script src="components/angular/angular.min.js"></script>
 
   <script src="js/mixit.js"></script>
 </body>
