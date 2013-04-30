@@ -12,10 +12,10 @@
 
 <body>
   <div class="presentation">
-    <section>
+    <section id="backbone-ember-angular">
       <h1>Backbone, Ember et Angular sont dans un bateau...</h1>
     </section>
-    <section>
+    <section id="loicfrering">
       <h1>Loïc Frering</h1>
       <ul>
         <li><i class="icon-map-marker"></i> Lyon, France</li>
@@ -25,18 +25,18 @@
         <li><i class="icon-envelope"></i>   <a href="mailto:loic.frering@gmail.com" title="loic.frering@gmail.com">loic.frering@gmail.com</a></li>
       </ul>
     </section>
-    <section>
+    <section id="intro">
       <h1>Backbone, Ember et Angular sont dans un bateau...</h1>
     </section>
-    <section>
+    <section id="tasks">
       <h1>Tasks</h1>
     </section>
 
     <!-- ID Cards -->
-    <section class="backbone title">
+    <section id="backbone" class="backbone title">
       <h1>Backbone</h1>
     </section>
-    <section class="backbone title">
+    <section id="backbone-intro" class="backbone title">
       <ul>
         <li><i class="icon-user"></i>     Jeremy Ashkenas</li>
         <li><i class="icon-money"></i>    DocumentCloud</li>
@@ -47,13 +47,13 @@
         <li><i class="icon-legal"></i>    MIT</li>
       </ul>
     </section>
-    <section class="backbone title">
+    <section id="backbone-headline" class="backbone title">
       <h1>Backbone.js gives <strong>structure</strong> to web applications</h1>
     </section>
-    <section class="ember title">
+    <section id="ember" class="ember title">
       <h1>Ember</h1>
     </section>
-    <section class="ember title">
+    <section id="ember-intro" class="ember title">
       <ul>
         <li><i class="icon-user"></i>     Yehuda Katz &amp; Tom Dale</li>
         <li><i class="icon-money"></i>    Tilde Inc.</li>
@@ -64,13 +64,13 @@
         <li><i class="icon-legal"></i>    MIT</li>
       </ul>
     </section>
-    <section class="ember title">
+    <section id="ember-headline" class="ember title">
       <h1>A framework for creating <strong>ambitious</strong> web applications</h1>
     </section>
-    <section class="angular title">
+    <section id="angular" class="angular title">
       <h1>Angular</h1>
     </section>
-    <section class="angular title">
+    <section id="angular-intro" class="angular title">
       <ul>
         <li><i class="icon-user"></i>     Igor Minár &amp; Vojta Jína</li>
         <li><i class="icon-money"></i>    Google</li>
@@ -81,15 +81,15 @@
         <li><i class="icon-legal"></i>    MIT</li>
       </ul>
     </section>
-    <section class="angular title">
+    <section id="angular-headline" class="angular title">
       <h1><strong>HTML enhanced</strong> for web apps!</h1>
     </section>
 
     <!-- Object Model -->
-    <section>
+    <section id="object-model">
       <h1>Object Model</h1>
     </section>
-    <section class="backbone">
+    <section id="object-model-backbone" class="backbone">
       <h1>Object Model</h1>
       <ul>
         <li>Used internally</li>
@@ -97,7 +97,7 @@
         <li>Brings inheritance</li>
       </ul>
     </section>
-    <section class="backbone">
+    <section id="object-model-backbone-code" class="backbone">
 <pre><code>var HandlebarsView = <strong>Backbone.View.extend</strong>({
   render: function() {
     if (!_.isFunction(this.template)) {
@@ -116,7 +116,7 @@ var TaskView = <strong>HandlebarsView.extend</strong>({
 });
 </code></pre>
     </section>
-    <section class="ember">
+    <section id="object-model-ember" class="ember">
       <h1>Object Model</h1>
       <ul>
         <li>Exposed to the user</li>
@@ -126,7 +126,7 @@ var TaskView = <strong>HandlebarsView.extend</strong>({
         <li>Observers &amp; Bindings</li>
       </ul>
     </section>
-    <section class="ember todo">
+    <section id="object-model-ember-code-1" class="ember">
 <pre><code>var Task = <strong>Ember.Object.extend</strong>({
   done: false,
   init: function() {
@@ -145,7 +145,7 @@ var User = Ember.Object.extend({
 });
 </code></pre>
     </section>
-    <section class="ember">
+    <section id="object-model-ember-code-2" class="ember">
 <pre><code class="javascript">var task1 = <strong>Task.create({title: 'Go to Mix-IT'});</strong>
 task1<strong>.set('done', true)</strong>;
 console.log(task1.get('summary'));
@@ -158,7 +158,7 @@ user.set('tasks', [task1, task2]);
 console.log('Remaining tasks: ' + user<strong>.get('remainingTasks')</strong>);
 </code></pre>
     </section>
-    <section class="angular">
+    <section id="services-di-angular" class="angular">
       <h1>Services &amp; Dependency Injection</h1>
       <ul>
         <li>OMG!! Dependency Injection!!!</li>
@@ -166,7 +166,7 @@ console.log('Remaining tasks: ' + user<strong>.get('remainingTasks')</strong>);
         <li>Testability</li>
       </ul>
     </section>
-    <section class="angular">
+    <section id="services-di-angular-code" class="angular">
 <pre><code class="javascript">
 module.factory(<strong>'Task'</strong>, ['$resource', function($resource) {
   return $resource('http://localhost\\:3000/tasks/:id', {}, {
@@ -181,7 +181,7 @@ var TasksCtrl = ['$scope', <strong>'Task'</strong>, function($scope, <strong>Tas
 }];
 </code></pre>
     </section>
-    <section>
+    <section id="object-model-conclusion">
       <h1>Object Model</h1>
       <ul>
         <li class="backbone">Simple inheritance</li>
@@ -191,10 +191,10 @@ var TasksCtrl = ['$scope', <strong>'Task'</strong>, function($scope, <strong>Tas
     </section>
 
     <!-- MVwhatever -->
-    <section>
+    <section id="mv*">
       <h1>MVwhatever</h1>
     </section>
-    <section>
+    <section id="mv*-intro">
       <h1>MVwhatever</h1>
       <ul>
         <li>Model</li>
@@ -209,7 +209,7 @@ var TasksCtrl = ['$scope', <strong>'Task'</strong>, function($scope, <strong>Tas
         </li>
       </ul>
     </section>
-    <section class="backbone">
+    <section id="model-backbone" class="backbone">
       <h1>Model</h1>
       <ul>
         <li>Mutators</li>
@@ -218,7 +218,7 @@ var TasksCtrl = ['$scope', <strong>'Task'</strong>, function($scope, <strong>Tas
         <li>Validation?!</li>
       </ul>
     </section>
-    <section class="backbone">
+    <section id="model-backbone-code" class="backbone">
 <pre><code>var Task  = Backbone.Model.extend({
   defaults: {
     title: 'New Task'
@@ -226,7 +226,7 @@ var TasksCtrl = ['$scope', <strong>'Task'</strong>, function($scope, <strong>Tas
 });
 </code></pre>
     </section>
-    <section class="backbone">
+    <section id="view-backbone" class="backbone">
       <h1>View</h1>
       <ul>
         <li>A portion of DOM</li>
@@ -240,7 +240,7 @@ var TasksCtrl = ['$scope', <strong>'Task'</strong>, function($scope, <strong>Tas
         </li>
       </ul>
     </section>
-    <section class="backbone">
+    <section id="view-backbone-code" class="backbone">
 <pre><code>var <strong>HandlebarsView</strong> = Backbone.View.extend({
   render: function() {
     if (!_.isFunction(this.template)) {
@@ -252,14 +252,14 @@ var TasksCtrl = ['$scope', <strong>'Task'</strong>, function($scope, <strong>Tas
 });
 </code></pre>
     </section>
-    <section class="backbone">
+    <section id="controller-backbone" class="backbone">
       <h1>Controller</h1>
       <ul>
         <li>No explicit controller</li>
         <li>Route actions &amp; views do the job</li>
       </ul>
     </section>
-    <section class="backbone">
+    <section id="controller-backbone-code" class="backbone">
 <pre><code>var TaskFormView = HandlebarsView.extend({
   template: $('#task-form-template').html(),
   events: {
@@ -280,14 +280,14 @@ var TasksCtrl = ['$scope', <strong>'Task'</strong>, function($scope, <strong>Tas
 });
 </code></pre>
     </section>
-    <section class="ember">
+    <section id="model-ember" class="ember">
       <h1>Model</h1>
       <ul>
         <li>Features of Ember.Object</li>
         <li>ActiveRecord like with ember-data</li>
       </ul>
     </section>
-    <section class="ember">
+    <section id="view-ember" class="ember">
       <h1>View</h1>
       <ul>
         <li>String based templating with Handlebars</li>
@@ -296,7 +296,7 @@ var TasksCtrl = ['$scope', <strong>'Task'</strong>, function($scope, <strong>Tas
         <li>Default implementation</li>
       </ul>
     </section>
-    <section class="ember">
+    <section id="view-ember-code" class="ember">
 <pre><code>
 &lt;ul&gt;
   <strong>{{#each task in model}}</strong>
@@ -310,7 +310,7 @@ var TasksCtrl = ['$scope', <strong>'Task'</strong>, function($scope, <strong>Tas
 &lt;/ul&gt;
 </code></pre>
     </section>
-    <section class="ember">
+    <section id="controller-ember" class="ember">
       <h1>Controller</h1>
       <ul>
         <li>Decorate the model with display logic</li>
@@ -318,14 +318,14 @@ var TasksCtrl = ['$scope', <strong>'Task'</strong>, function($scope, <strong>Tas
         <li>Default implementation</li>
       </ul>
     </section>
-    <section class="angular">
+    <section id="model-angular" class="angular">
       <h1>Model</h1>
       <ul>
         <li>Plain JavaScript Objects</li>
         <li>ActiveRecord like with $resource</li>
       </ul>
     </section>
-    <section class="angular">
+    <section id="model-angular-scope" class="angular">
       <h1>Scope</h1>
       <ul>
         <li>Glue between controller and view</li>
@@ -333,7 +333,7 @@ var TasksCtrl = ['$scope', <strong>'Task'</strong>, function($scope, <strong>Tas
         <li>Responsible for two-way data binding</li>
       </ul>
     </section>
-    <section class="angular">
+    <section id="view-angular" class="angular">
       <h1>View</h1>
       <ul>
         <li>DOM templating</li>
@@ -342,7 +342,7 @@ var TasksCtrl = ['$scope', <strong>'Task'</strong>, function($scope, <strong>Tas
         <li>May seem a bit more rigid</li>
       </ul>
     </section>
-    <section class="angular">
+    <section id="view-angular-code" class="angular">
 <pre><code>&lt;ul&gt;
   &lt;li <strong>ng-repeat="task in tasks"</strong>
       ng-class="{active: task.active}"&gt;
@@ -352,7 +352,7 @@ var TasksCtrl = ['$scope', <strong>'Task'</strong>, function($scope, <strong>Tas
 &lt;/ul&gt;
 </code></pre>
     </section>
-    <section class="angular">
+    <section id="controller-angular" class="angular">
       <h1>Controller</h1>
       <ul>
         <li>Written in JavaScript!</li>
@@ -361,7 +361,7 @@ var TasksCtrl = ['$scope', <strong>'Task'</strong>, function($scope, <strong>Tas
         <li>Populates the scope</li>
       </ul>
     </section>
-    <section class="angular">
+    <section id="controller-angular-code" class="angular">
       <div>
 <pre><code class="javascript">var TaskDetailsCtrl = ['$scope', '$routeParams', 'Task',
   function(<strong>$scope, $routeParams, Task</strong>) {
@@ -379,7 +379,7 @@ var TasksCtrl = ['$scope', <strong>'Task'</strong>, function($scope, <strong>Tas
 </code></pre>
       </div>
     </section>
-    <section>
+    <section id="mv*-conclusion">
       <h1>MV*</h1>
       <ul>
         <li class="backbone">A basic structure</li>
@@ -389,10 +389,10 @@ var TasksCtrl = ['$scope', <strong>'Task'</strong>, function($scope, <strong>Tas
     </section>
 
     <!-- Binding -->
-    <section>
+    <section id="binding">
       <h1>Binding</h1>
     </section>
-    <section>
+    <section id="binding-intro">
       <h1>Binding</h1>
       <ul>
         <li>Connecting object properties</li>
@@ -405,14 +405,14 @@ var TasksCtrl = ['$scope', <strong>'Task'</strong>, function($scope, <strong>Tas
         <div>Hello <span></span>!</div>
       </div>
     </section>
-    <section class="backbone" id="backbone-binding">
+    <section id="binding-backbone" class="backbone">
       <h1>Binding</h1>
       <ul>
         <li>No automatic binding</li>
         <li>Manual wiring through events</li>
       </ul>
     </section>
-    <section class="backbone">
+    <section id="binding-backbone-model-events" class="backbone">
       <h1>Model Events</h1>
       <ul>
         <li>change</li>
@@ -421,7 +421,7 @@ var TasksCtrl = ['$scope', <strong>'Task'</strong>, function($scope, <strong>Tas
         <li>sync</li>
       </ul>
     </section>
-    <section class="backbone">
+    <section id="binding-backbone-collection-events" class="backbone">
       <h1>Collection Events</h1>
       <ul>
         <li>add</li>
@@ -430,7 +430,7 @@ var TasksCtrl = ['$scope', <strong>'Task'</strong>, function($scope, <strong>Tas
         <li>sync</li>
       </ul>
     </section>
-    <section class="backbone">
+    <section id="binding-backbone-code" class="backbone">
       <div>
 <pre><code class="javascript">var PromptView = Backbone.View.extend({
   events: { keyup: 'change' },
@@ -455,7 +455,7 @@ var TasksCtrl = ['$scope', <strong>'Task'</strong>, function($scope, <strong>Tas
 </code></pre>
       </div>
     </section>
-    <section class="ember">
+    <section id="binding-ember" class="ember">
       <h1>Binding</h1>
       <ul>
         <li>Two way data-binding</li>
@@ -463,7 +463,7 @@ var TasksCtrl = ['$scope', <strong>'Task'</strong>, function($scope, <strong>Tas
         <li>Handlebars + Metamorph</li>
       </ul>
     </section>
-    <section class="ember">
+    <section id="binding-ember-metamorph" class="ember">
 <pre><code class="html">&lt;ul&gt;
   <strong>&lt;script id="metamorph-0-start"&gt;&lt;/script&gt;</strong>
   <strong>&lt;script id="metamorph-2-start"&gt;&lt;/script&gt;</strong>
@@ -485,7 +485,7 @@ var TasksCtrl = ['$scope', <strong>'Task'</strong>, function($scope, <strong>Tas
 &lt;/ul&gt;
 </code></pre>
     </section>
-    <section class="ember">
+    <section id="binding-ember-code" class="ember">
       <div>
 <pre><code class="javascript">var AppView = Ember.View.extend({
   template: $('#ember-binding-template').html()
@@ -496,7 +496,7 @@ var TasksCtrl = ['$scope', <strong>'Task'</strong>, function($scope, <strong>Tas
 </code></pre>
       </div>
     </section>
-    <section class="angular">
+    <section id="binding-angular" class="angular">
       <h1>Binding</h1>
       <ul>
         <li>Two way data-binding</li>
@@ -504,7 +504,7 @@ var TasksCtrl = ['$scope', <strong>'Task'</strong>, function($scope, <strong>Tas
         <li>Working on plain JavaScript objects</li>
       </ul>
     </section>
-    <section class="angular">
+    <section id="binding-angular-dirty-checking" class="angular">
       <h1>Dirty Checking</h1>
       <ul>
         <li>Angular execution context</li>
@@ -513,14 +513,14 @@ var TasksCtrl = ['$scope', <strong>'Task'</strong>, function($scope, <strong>Tas
         <li>Precisely update the DOM accordingly</li>
       </ul>
     </section>
-    <section class="angular">
+    <section id="binding-angular-code" class="angular">
 <pre><code>&lt;div ng-app&gt;
   &lt;div&gt;&lt;input type="text" ng-model="name" /&gt;&lt;/div&gt;
   &lt;div&gt;Hello {{name}}!&lt;/div&gt;
 &lt;/div&gt;
 </code></pre>
     </section>
-    <section>
+    <section id="binding-conclusion">
       <h1>Binding</h1>
       <ul>
         <li class="backbone">Fine grained control with manual wiring</li>
@@ -530,11 +530,11 @@ var TasksCtrl = ['$scope', <strong>'Task'</strong>, function($scope, <strong>Tas
     </section>
 
     <!-- Routing -->
-    <section>
+    <section id="routing">
       <h1>Routing</h1>
     </section>
-    <section>
-      <h1>Routing</h1>
+    <section id="routing-intro">
+      <h1>Routing &amp; Deep Linking</h1>
       <p>
         Associate an URL to a particular application state<br />
         Managing Single Page Application layouts?
@@ -544,7 +544,7 @@ var TasksCtrl = ['$scope', <strong>'Task'</strong>, function($scope, <strong>Tas
         <dd>See details of the task with id 1</dd>
       </dl>
     </section>
-    <section class="backbone">
+    <section id="routing-backbone" class="backbone">
       <h1>Routing</h1>
       <ul>
         <li>Backbone.Router &amp; Backbone.History</li>
@@ -553,7 +553,7 @@ var TasksCtrl = ['$scope', <strong>'Task'</strong>, function($scope, <strong>Tas
         <li>Manual layout and memory management</li>
       </ul>
     </section>
-    <section class="backbone">
+    <section id="routing-backbone-code-1" class="backbone">
 <pre><code class="javascript">var TasksRouter = Backbone.Router.extend({
   routes: {
     '':                'index',
@@ -568,13 +568,13 @@ var TasksCtrl = ['$scope', <strong>'Task'</strong>, function($scope, <strong>Tas
 });
 </code></pre>
     </section>
-    <section class="backbone">
+    <section id="routing-backbone-code-2"  class="backbone">
       <pre><code>show: function(id) {
   this.current(TaskDetailsView, id);
 }
 </code></pre>
     </section>
-    <section class="backbone">
+    <section id="routing-backbone-code-3" class="backbone">
 <pre><code>current: function(viewClass, task) {
   if (!(task instanceof Task)) {
     var id = task;
@@ -593,7 +593,7 @@ var TasksCtrl = ['$scope', <strong>'Task'</strong>, function($scope, <strong>Tas
 }
 </code></pre>
     </section>
-    <section class="backbone">
+    <section id="routing-backbone-code-4" class="backbone">
 <pre><code>list: function() {
   if (!this.tasksView||this.tasksView.$el.parent().size()===0) {
     <strong>this.tasksView = new TasksView({collection: this.tasks});</strong>
@@ -608,7 +608,7 @@ var TasksCtrl = ['$scope', <strong>'Task'</strong>, function($scope, <strong>Tas
 }
 </pre></code>
     </section>
-    <section class="ember">
+    <section id="routing-ember" class="ember">
       <h1>Routing</h1>
       <ul>
         <li>Router is first class citizen</li>
@@ -616,7 +616,7 @@ var TasksCtrl = ['$scope', <strong>'Task'</strong>, function($scope, <strong>Tas
         <li>Convention over Configuration</li>
       </ul>
     </section>
-    <section class="ember">
+    <section id="routing-ember-code-1" class="ember">
 <pre><code>Tasks.Router.map(function() {
   this.resource('tasks', function() {
     this.route('new', { path: '/new' });
@@ -627,7 +627,7 @@ var TasksCtrl = ['$scope', <strong>'Task'</strong>, function($scope, <strong>Tas
 });
 </code></pre>
     </section>
-    <section class="ember">
+    <section id="routing-ember-code-2" class="ember">
 <pre><code>&lt;div class="tasks"&gt;
   &lt;ul&gt;
     {{#each task in model}}
@@ -645,7 +645,7 @@ var TasksCtrl = ['$scope', <strong>'Task'</strong>, function($scope, <strong>Tas
 <strong>{{outlet}}</strong>
 </code></pre>
     </section>
-    <section class="ember">
+    <section id="routing-ember-code-3" class="ember">
 <pre><code class="javascript">Tasks.TasksNewRoute = Ember.Route.extend({
   <strong>renderTemplate:</strong> function() {
     this.render('tasks/form');
@@ -671,7 +671,7 @@ var TasksCtrl = ['$scope', <strong>'Task'</strong>, function($scope, <strong>Tas
 });
 </code></pre>
     </section>
-    <section class="angular">
+    <section id="routing-angular" class="angular">
       <h1>Routing</h1>
       <ul>
         <li>Router looks to be second class citizen</li>
@@ -680,7 +680,7 @@ var TasksCtrl = ['$scope', <strong>'Task'</strong>, function($scope, <strong>Tas
         <li>One directive: ng-view</li>
       </ul>
     </section>
-    <section class="angular">
+    <section id="routing-angular-code" class="angular">
 <pre><code>$routeProvider.
 when('/tasks', {
   <strong>templateUrl: 'partials/tasks.html',</strong>
@@ -698,7 +698,7 @@ when('/tasks/:taskId', {
 otherwise({redirectTo: '/tasks'});
 </code></pre>
     </section>
-    <section>
+    <section id="routing-conclusion">
       <h1>Routing</h1>
       <ul>
         <li class="backbone">Everything is possible but manual</li>
@@ -709,10 +709,10 @@ otherwise({redirectTo: '/tasks'});
     </section>
 
     <!-- Server API -->
-    <section>
+    <section id="api">
       <h1>Server API</h1>
     </section>
-    <section>
+    <section id="api-intro">
       <h1>Server API</h1>
       <ul>
         <li>RESTful API</li>
@@ -720,7 +720,7 @@ otherwise({redirectTo: '/tasks'});
         <li>Ease of implementation</li>
       </ul>
     </section>
-    <section class="backbone">
+    <section id="api-backbone" class="backbone">
       <h1>Backbone Sync</h1>
       <ul>
         <li>Based on $.ajax</li>
@@ -728,7 +728,7 @@ otherwise({redirectTo: '/tasks'});
         <li>Easily customizable</li>
       </ul>
     </section>
-    <section class="backbone">
+    <section id="api-backbone-code-1" class="backbone">
 <pre><code>var Tasks = Backbone.Collection.extend({
   model: Task,
   <strong>url:   'http://localhost:3000/tasks',</strong>
@@ -738,7 +738,7 @@ otherwise({redirectTo: '/tasks'});
 });
 </code></pre>
     </section>
-    <section class="backbone">
+    <section id="api-backbone-code-2" class="backbone">
 <pre><code>save: function() {
   <strong>this.model.save</strong>({
     title: this.$('#title').val(),
@@ -752,7 +752,7 @@ otherwise({redirectTo: '/tasks'});
 }
 </code></pre>
     </section>
-    <section class="ember">
+    <section id="api-ember" class="ember">
       <h1>Ember Data</h1>
       <ul>
         <li>ActiveRecord like</li>
@@ -762,7 +762,7 @@ otherwise({redirectTo: '/tasks'});
         <li>Still in active development</li>
       </ul>
     </section>
-    <section class="ember">
+    <section id="api-ember-code" class="ember">
 <pre><code>save: function(task) {
   <strong>task.one('didCreate', this, function() {</strong>
     this.transitionTo('tasks.show', task);
@@ -771,7 +771,7 @@ otherwise({redirectTo: '/tasks'});
 }
 </code></pre>
     </section>
-    <section class="angular">
+    <section id="api-angular" class="angular">
       <h1>$http &amp; $resource</h1>
       <ul>
         <li>$http for low level sync</li>
@@ -781,7 +781,7 @@ otherwise({redirectTo: '/tasks'});
         <li>Custom response parsing needs little tricks</li>
       </ul>
     </section>
-    <section class="angular">
+    <section id="api-angular-code" class="angular">
 <pre><code class="javascript">module.factory('Task', ['$resource', function($resource) {
   var resource = <strong>$resource('http://localhost\\:3000/tasks/:id'</strong>, {}, {
     query: {method: 'GET', isArray: false}
@@ -805,7 +805,7 @@ var TaskNewCtrl = ['$scope', '$location', <strong>'Task'</strong>,
 ];
 </code></pre>
     </section>
-    <section>
+    <section id="api-conclusion">
       <h1>Server API</h1>
       <ul>
         <li class="backbone">Easily customizable</li>
@@ -813,18 +813,19 @@ var TaskNewCtrl = ['$scope', '$location', <strong>'Task'</strong>,
         <li class="angular">Testability: takes advantage of DI</li>
       </ul>
     </section>
+
     <!-- Components -->
-    <section>
+    <section id="components">
       <h1>Components</h1>
     </section>
-    <section>
+    <section id="components-intro">
       <h1>Components</h1>
       <ul>
         <li>Writing reusable components</li>
         <li>Included components</li>
       </ul>
     </section>
-    <section class="backbone">
+    <section id="components-backbone" class="backbone">
       <h1>Components</h1>
       <ul>
         <li>No explicit notion of component</li>
@@ -832,7 +833,7 @@ var TaskNewCtrl = ['$scope', '$location', <strong>'Task'</strong>,
         <li>Manage their attachment to the DOM manually</li>
       </ul>
     </section>
-    <section class="ember">
+    <section id="components-ember" class="ember">
       <h1>Components</h1>
       <ul>
         <li>Components are just views</li>
@@ -841,7 +842,7 @@ var TaskNewCtrl = ['$scope', '$location', <strong>'Task'</strong>,
         <li>Dedicated handlebars plugins</li>
       </ul>
     </section>
-    <section class="ember">
+    <section id="components-ember-code" class="ember">
 <pre><code>
 &lt;form {{action save model on="submit"}}&gt;
   &lt;div&gt;
@@ -854,7 +855,7 @@ var TaskNewCtrl = ['$scope', '$location', <strong>'Task'</strong>,
 &lt;/form&gt;
 </code></pre>
     </section>
-    <section class="angular">
+    <section id="components-angular" class="angular">
       <h1>Directives</h1>
       <ul>
         <li>Custom HTML elements!</li>
@@ -871,7 +872,7 @@ var TaskNewCtrl = ['$scope', '$location', <strong>'Task'</strong>,
         <li>Enhancing standard HTML elements</li>
       </ul>
     </section>
-    <section>
+    <section id="components-conclusion">
       <h1>Components</h1>
       <ul>
         <li class="backbone">Components can just be custom views</li>
@@ -880,10 +881,10 @@ var TaskNewCtrl = ['$scope', '$location', <strong>'Task'</strong>,
       </ul>
     </section>
 
-    <section>
+    <section id="conclusion">
       <h1>Conclusion</h1>
     </section>
-    <section>
+    <section id="questions">
       <h1>Q&amp;A</h1>
     </section>
   </div>
