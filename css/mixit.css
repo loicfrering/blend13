@@ -44,3 +44,9 @@ ul {
 pre code {
   background: none;
 }
+#backbone-ember-angular aside {
+  font-size: 50%;
+  position: absolute;
+  right: 1em;
+  bottom: 0.4em;
+}
