@@ -103,7 +103,7 @@
     if (!_.isFunction(this.template)) {
       this.tmpl = Handlebars.compile(this.tmpl);
     }
-    this.$el.html(this.tmpl(this.model||this.collection||{}));
+    this.$el.html(this.tmpl(this.model || this.collection || {}));
     return this;
   }
 });
@@ -155,7 +155,7 @@ console.log(task2<strong>.get('summary')</strong>);
 
 var user = User.create();
 user.set('tasks', [task1, task2]);
-console.log('Remaining tasks: ' + user<strong>.get('remainingTasks')</strong>);
+console.log('Remaining: ' + user<strong>.get('remainingTasks')</strong>);
 </code></pre>
   </section>
   <section id="services-di-angular" class="angular">
@@ -166,7 +166,7 @@ console.log('Remaining tasks: ' + user<strong>.get('remainingTasks')</strong>);
       <li>Testability</li>
     </ul>
   </section>
-  <section id="services-di-angular-code" class="angular">
+  <section id="services-di-angular-code" class="angular" style="font-size: 99%;">
 <pre><code class="javascript">
 module.factory(<strong>'Task'</strong>, ['$resource', function($resource) {
   return $resource('http://localhost\\:3000/tasks/:id', {}, {
@@ -219,7 +219,7 @@ var TasksCtrl = ['$scope', <strong>'Task'</strong>, function($scope, <strong>Tas
     </ul>
   </section>
   <section id="model-backbone-code" class="backbone">
-<pre><code>var Task  = Backbone.Model.extend({
+<pre><code class="javascript">var Task  = Backbone.Model.extend({
   defaults: {
     title: 'New Task'
   }
@@ -617,7 +617,7 @@ var TasksCtrl = ['$scope', <strong>'Task'</strong>, function($scope, <strong>Tas
     </ul>
   </section>
   <section id="routing-ember-code-1" class="ember">
-<pre><code>Tasks.Router.map(function() {
+<pre><code class="javascript">Tasks.Router.map(function() {
   this.resource('tasks', function() {
     this.route('new', { path: '/new' });
     this.route('show', { path: '/:task_id' });
@@ -857,7 +857,7 @@ var TaskNewCtrl = ['$scope', '$location', <strong>'Task'</strong>,
   </section>
   <section id="components-angular" class="angular">
     <h1>Directives</h1>
-    <ul>
+    <ul style="margin-bottom: 0">
       <li>Custom HTML elements!</li>
       <li>
         Powerful but complex notions:
