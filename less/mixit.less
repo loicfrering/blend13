@@ -1,3 +1,52 @@
+@font-face {
+  font-family: 'Source Code Pro';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Source Code Pro Light'), local('SourceCodePro-Light'), url(../fonts/sourcecodepro-light.woff) format('woff');
+}
+@font-face {
+  font-family: 'Source Code Pro';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Source Code Pro'), local('SourceCodePro-Regular'), url(../fonts/sourcecodepro-regular.woff) format('woff');
+}
+@font-face {
+  font-family: 'Source Code Pro';
+  font-style: normal;
+  font-weight: 500;
+  src: local('Source Code Pro'), local('SourceCodePro-Medium'), url(../fonts/sourcecodepro-medium.woff) format('woff');
+}
+@font-face {
+  font-family: 'Source Code Pro';
+  font-style: normal;
+  font-weight: 600;
+  src: local('Source Code Pro'), local('SourceCodePro-Semibold'), url(../fonts/sourcecodepro-semibold.woff) format('woff');
+}
+@font-face {
+  font-family: 'Source Code Pro';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Source Code Pro'), local('SourceCodePro-Bold'), url(../fonts/sourcecodepro-bold.woff) format('woff');
+}
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Source Sans Pro Light'), local('SourceSansPro-Light'), url(../fonts/sourcesanspro-light.woff) format('woff');
+}
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Source Sans Pro'), local('SourceSansPro-Regular'), url(../fonts/sourcesanspro-regular.woff) format('woff');
+}
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Source Sans Pro'), local('SourceSansPro-Bold'), url(../fonts/sourcesanspro-bold.woff) format('woff');
+}
+
 section {
   background: #EEE;
   color: #434343;
@@ -8,7 +57,7 @@ h1 {
 }
 
 .backbone {
-  border-left: solid 20px #0071B5;
+  border-left: solid 0.6em #0071B5;
 }
 
 .backbone.title {
@@ -18,7 +67,7 @@ h1 {
 }
 
 .ember {
-  border-left: solid 20px orange;
+  border-left: solid 0.6em orange;
 }
 
 .ember.title {
@@ -28,7 +77,7 @@ h1 {
 }
 
 .angular {
-  border-left: solid 20px #DD1B16;
+  border-left: solid 0.6em #DD1B16;
 }
 
 .angular.title {
@@ -52,6 +101,7 @@ ul {
 
 pre code {
   background: none;
+  font-size: 44%;
 }
 
 #backbone-ember-angular aside {
