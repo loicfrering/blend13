@@ -300,13 +300,13 @@ var TasksCtrl = ['$scope', <strong>'Task'</strong>, function($scope, <strong>Tas
 <pre><code class="xml">
 &lt;ul&gt;
   <strong>{{#each task in model}}</strong>
-    &lt;li {{bindAttr class="task.active:active"}}&gt;
+    &lt;li {{bind-attr class="task.active:active"}}&gt;
       &lt;h1&gt;
-        <strong>{{#linkTo "tasks.show" task}}{{task.title}}{{/linkTo}}</strong>
+        <strong>{{#link-to "tasks.show" task}}{{task.title}}{{/link-to}}</strong>
       &lt;/h1&gt;
     &lt;/li&gt;
   <strong>{{/each}}</strong>
-  &lt;li&gt;{{#linkTo "tasks.new"}}New task...{{/linkTo}}&lt;/li&gt;
+  &lt;li&gt;{{#link-to "tasks.new"}}New task...{{/link-to}}&lt;/li&gt;
 &lt;/ul&gt;
 </code></pre>
   </section>
@@ -631,15 +631,15 @@ var TasksCtrl = ['$scope', <strong>'Task'</strong>, function($scope, <strong>Tas
 <pre><code class="xml">&lt;div class="tasks"&gt;
   &lt;ul&gt;
     {{#each task in model}}
-      &lt;li {{bindAttr class="task.active:active"}}&gt;
+      &lt;li {{bind-attr class="task.active:active"}}&gt;
         &lt;h1&gt;
-          {{#linkTo "tasks.show" task}}
+          {{#link-to "tasks.show" task}}
             {{task.title}}
-          {{/linkTo}}
+          {{/link-to}}
         &lt;/h1&gt;
       &lt;/li&gt;
     {{/each}}
-    &lt;li&gt;{{#linkTo "tasks.new"}}New task...{{/linkTo}}&lt;/li&gt;
+    &lt;li&gt;{{#link-to "tasks.new"}}New task...{{/link-to}}&lt;/li&gt;
   &lt;/ul&gt;
 &lt;/div&gt;
 <strong>{{outlet}}</strong>
@@ -651,10 +651,12 @@ var TasksCtrl = ['$scope', <strong>'Task'</strong>, function($scope, <strong>Tas
     this.render('tasks/form');
   },
   <strong>model:</strong> function() {
-    return Tasks.Task.createRecord({
+    var task = this.get('store').createRecord('task', {
       title: 'New Task',
       description: 'Desc'
     });
+    task.save();
+    return task;
   },
   <strong>setupController:</strong> function(controller, task) {
     Tasks.Task.active(task);
@@ -662,10 +664,8 @@ var TasksCtrl = ['$scope', <strong>'Task'</strong>, function($scope, <strong>Tas
   },
   <strong>events:</strong> {
     save: function(task) {
-      task.one('didCreate', this, function() {
-        this.transitionTo('tasks.show', task);
-      });
-      this.get('store').commit();
+      task.save();
+      return this.transitionTo('tasks.show', task);
     }
   }
 });
@@ -758,16 +758,18 @@ otherwise({redirectTo: '/tasks'});
       <li>ActiveRecord like</li>
       <li>Mapping, Relationships &amp; Transactions!</li>
       <li>Different adapters</li>
-      <li>Lifecycle events</li>
-      <li>Still in active development</li>
+      <li><a href="http://jsonapi.org/" title="JSON API">JSON API Specification</a></li>
+      <li>Stabilizing (beta 2)</li>
     </ul>
   </section>
   <section id="api-ember-code" class="ember">
 <pre><code class="javascript">save: function(task) {
-  <strong>task.one('didCreate', this, function() {</strong>
-    this.transitionTo('tasks.show', task);
+  var self = this;
+  task.<strong>save()</strong>.<strong>then</strong>(function() {
+    self.transitionTo('tasks.show', task);
+  }, function() {
+    alert('An error occured...');
   });
-  <strong>this.get('store').commit();</strong>
 }
 </code></pre>
   </section>
@@ -836,10 +838,10 @@ var TaskNewCtrl = ['$scope', '$location', <strong>'Task'</strong>,
   <section id="components-ember" class="ember">
     <h1>Components</h1>
     <ul>
-      <li>Components are just views</li>
-      <li>Nesting via the view helper</li>
+      <li>Reusable views</li>
+      <li>Easy creation of custom components</li>
+      <li>Automatically registers Handlebars plugin</li>
       <li>Built-in components</li>
-      <li>Dedicated handlebars plugins</li>
     </ul>
   </section>
   <section id="components-ember-code" class="ember">
@@ -939,7 +941,7 @@ var TaskNewCtrl = ['$scope', '$location', <strong>'Task'</strong>,
       <li>Nice API documentation and guides</li>
       <li>Great Stack Overflow community</li>
       <li>Ember Chrome Extension</li>
-      <li>Lack of full tutorials</li>
+      <li>New full tutorial!</li>
       <li>Some outdated resources</li>
     </ul>
   </section>
