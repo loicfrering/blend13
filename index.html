@@ -98,20 +98,13 @@
     </ul>
   </section>
   <section id="object-model-backbone-code" class="backbone">
-<pre><code>var HandlebarsView = <strong>Backbone.View.extend</strong>({
+<pre><code class="javascript">var HandlebarsView = <strong>Backbone.View.extend</strong>({
   render: function() {
     if (!_.isFunction(this.template)) {
       this.tmpl = Handlebars.compile(this.tmpl);
     }
     this.$el.html(this.tmpl(this.model || this.collection || {}));
     return this;
-  }
-});
-
-var TaskView = <strong>HandlebarsView.extend</strong>({
-  render: function() {
-    console.log('Rendering...');
-    <strong>TaskView.__super__.render.apply(this);</strong>
   }
 });
 </code></pre>
