@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Backbone, Ember et Angular sont dans un bateau... Mix-IT 2013</title>
+  <title>Backbone, Ember et Angular sont dans un bateau... Blend Conference 2013</title>
   <meta charset="utf-8" />
   <link rel="stylesheet" href="components/normalize-css/normalize.css" />
   <link rel="stylesheet" href="components/font-awesome/build/assets/font-awesome/css/font-awesome.min.css" />
@@ -19,7 +19,7 @@
     <h1>Loïc Frering</h1>
     <ul>
       <li><i class="icon-map-marker"></i> Lyon, France</li>
-      <li><i class="icon-building"></i>   <a href="http://atosworldline.net" title="Atos Worldline">Atos Worldline</a></li>
+      <li><i class="icon-building"></i>   <a href="http://worldline.com" title="Worldline, an Atos company">Worldline</a></li>
       <li><i class="icon-twitter"></i>    <a href="https://twitter.com/loicfrering" title="@loicfrering sur Twitter">@loicfrering</a></li>
       <li><i class="icon-github"></i>     <a href="https://github.com/loicfrering" title="@loicfrering sur GitHub">@loicfrering</a></li>
       <li><i class="icon-envelope"></i>   <a href="mailto:loic.frering@gmail.com" title="loic.frering@gmail.com">loic.frering@gmail.com</a></li>
@@ -58,9 +58,9 @@
       <li><i class="icon-user"></i>     Yehuda Katz &amp; Tom Dale</li>
       <li><i class="icon-money"></i>    Tilde Inc.</li>
       <li><i class="icon-suitcase"></i> jQuery &amp; Handlebars</li>
-      <li><i class="icon-tag"></i>      1.0.0-rc.4</li>
+      <li><i class="icon-tag"></i>      1.0.0</li>
       <li><i class="icon-calendar"></i> december 2011</li>
-      <li><i class="icon-download"></i> 810 kb dev / 55 kb prod</li>
+      <li><i class="icon-download"></i> 957 kb dev / 64 kb prod</li>
       <li><i class="icon-legal"></i>    MIT</li>
     </ul>
   </section>
@@ -75,9 +75,9 @@
       <li><i class="icon-user"></i>     Mi<span style="font-size: 90%;">š</span>ko Hevery, Igor Minár &amp; Vojta Jína</li>
       <li><i class="icon-money"></i>    Google</li>
       <li><i class="icon-suitcase"></i> </li>
-      <li><i class="icon-tag"></i>      1.0.7</li>
+      <li><i class="icon-tag"></i>      1.0.8 / 1.2.0-rc.2</li>
       <li><i class="icon-calendar"></i> 2009</li>
-      <li><i class="icon-download"></i> 482 kb dev / 32 kb prod</li>
+      <li><i class="icon-download"></i> 493 kb dev / 33 kb prod</li>
       <li><i class="icon-legal"></i>    MIT</li>
     </ul>
   </section>
@@ -98,20 +98,13 @@
     </ul>
   </section>
   <section id="object-model-backbone-code" class="backbone">
-<pre><code>var HandlebarsView = <strong>Backbone.View.extend</strong>({
+<pre><code class="javascript">var HandlebarsView = <strong>Backbone.View.extend</strong>({
   render: function() {
     if (!_.isFunction(this.template)) {
       this.tmpl = Handlebars.compile(this.tmpl);
     }
     this.$el.html(this.tmpl(this.model || this.collection || {}));
     return this;
-  }
-});
-
-var TaskView = <strong>HandlebarsView.extend</strong>({
-  render: function() {
-    console.log('Rendering...');
-    <strong>TaskView.__super__.render.apply(this);</strong>
   }
 });
 </code></pre>
@@ -121,8 +114,8 @@ var TaskView = <strong>HandlebarsView.extend</strong>({
     <ul>
       <li>Exposed to the user</li>
       <li>Classes &amp; Inheritance</li>
-      <li>Reopening classes</li>
-      <li>Computed properties</li>
+      <li>Reopening Classes</li>
+      <li>Computed Properties</li>
       <li>Observers &amp; Bindings</li>
     </ul>
   </section>
@@ -145,7 +138,7 @@ var User = Ember.Object.extend({
 });
 </code></pre>
   </section>
-  <section id="object-model-ember-code-2" class="ember">
+  <!--section id="object-model-ember-code-2" class="ember">
 <pre><code class="javascript">var task1 = <strong>Task.create({title: 'Go to Mix-IT'});</strong>
 task1<strong>.set('done', true)</strong>;
 console.log(task1.get('summary'));
@@ -157,11 +150,11 @@ var user = User.create();
 user.set('tasks', [task1, task2]);
 console.log('Remaining: ' + user<strong>.get('remainingTasks')</strong>);
 </code></pre>
-  </section>
+  </section-->
   <section id="services-di-angular" class="angular">
     <h1>Services &amp; Dependency Injection</h1>
     <ul>
-      <li>OMG!! Dependency Injection!!!</li>
+      <li>Dependency Injection!!!</li>
       <li>Separation of Concerns</li>
       <li>Testability</li>
     </ul>
@@ -186,7 +179,7 @@ var TasksCtrl = ['$scope', <strong>'Task'</strong>, function($scope, <strong>Tas
     <ul>
       <li class="backbone">Simple inheritance</li>
       <li class="ember">A powerful Object Model</li>
-      <li class="angular">Works with plain old JavaScript</li>
+      <li class="angular">Works with plain old JavaScript &amp; DI</li>
     </ul>
   </section>
 
@@ -213,25 +206,34 @@ var TasksCtrl = ['$scope', <strong>'Task'</strong>, function($scope, <strong>Tas
     <h1>Model</h1>
     <ul>
       <li>Mutators</li>
-      <li>Events</li>
-      <li>Sync</li>
-      <li>Validation?!</li>
+      <li>
+        Events:
+        <ul>
+          <li>change</li>
+          <li>change:[attribute]</li>
+          <li>destroy</li>
+          <li>sync</li>
+        </ul>
+      </li>
+      <!--li>Sync</li-->
+      <!--li>Validation?!</li-->
     </ul>
   </section>
-  <section id="model-backbone-code" class="backbone">
+  <!--section id="model-backbone-code" class="backbone">
 <pre><code class="javascript">var Task  = Backbone.Model.extend({
   defaults: {
     title: 'New Task'
   }
 });
 </code></pre>
-  </section>
+  </section-->
   <section id="view-backbone" class="backbone">
     <h1>View</h1>
     <ul>
       <li>A portion of DOM</li>
-      <li>Event delegation</li>
+      <!--li>Event delegation</li-->
       <li>Manage a model or collection</li>
+      <li>External template engine</li>
       <li>
 <pre><code>render: function() {
   return this;
@@ -240,7 +242,7 @@ var TasksCtrl = ['$scope', <strong>'Task'</strong>, function($scope, <strong>Tas
       </li>
     </ul>
   </section>
-  <section id="view-backbone-code" class="backbone">
+  <!--section id="view-backbone-code" class="backbone">
 <pre><code class="javascript">var <strong>HandlebarsView</strong> = Backbone.View.extend({
   render: function() {
     if (!_.isFunction(this.template)) {
@@ -251,7 +253,7 @@ var TasksCtrl = ['$scope', <strong>'Task'</strong>, function($scope, <strong>Tas
   }
 });
 </code></pre>
-  </section>
+  </section-->
   <section id="controller-backbone" class="backbone">
     <h1>Controller</h1>
     <ul>
@@ -260,7 +262,7 @@ var TasksCtrl = ['$scope', <strong>'Task'</strong>, function($scope, <strong>Tas
     </ul>
   </section>
   <section id="controller-backbone-code" class="backbone">
-<pre><code>var TaskFormView = HandlebarsView.extend({
+<pre><code>var TaskFormView = <strong>HandlebarsView.extend</strong>({
   template: $('#task-form-template').html(),
   events: {
     'submit form': 'save'
@@ -283,8 +285,15 @@ var TasksCtrl = ['$scope', <strong>'Task'</strong>, function($scope, <strong>Tas
   <section id="model-ember" class="ember">
     <h1>Model</h1>
     <ul>
-      <li>Features of Ember.Object</li>
-      <li>ActiveRecord like with ember-data</li>
+      <li>
+        Features of Ember.Object:
+        <ul>
+          <li>Inheritance</li>
+          <li>Computed Properties</li>
+          <li>Observers &amp; Bindings</li>
+        </ul>
+      </li>
+      <!--li>ActiveRecord like with ember-data</li-->
     </ul>
   </section>
   <section id="view-ember" class="ember">
@@ -292,7 +301,8 @@ var TasksCtrl = ['$scope', <strong>'Task'</strong>, function($scope, <strong>Tas
     <ul>
       <li>String based templating with Handlebars</li>
       <li>Handle user interactions</li>
-      <li>Event delegation</li>
+      <!--li>Event delegation</li-->
+      <li>Convention over Configuration</li>
       <li>Default implementation</li>
     </ul>
   </section>
@@ -300,13 +310,13 @@ var TasksCtrl = ['$scope', <strong>'Task'</strong>, function($scope, <strong>Tas
 <pre><code class="xml">
 &lt;ul&gt;
   <strong>{{#each task in model}}</strong>
-    &lt;li {{bindAttr class="task.active:active"}}&gt;
+    &lt;li {{bind-attr class="task.active:active"}}&gt;
       &lt;h1&gt;
-        <strong>{{#linkTo "tasks.show" task}}{{task.title}}{{/linkTo}}</strong>
+        <strong>{{#link-to "tasks.show" task}}{{task.title}}{{/link-to}}</strong>
       &lt;/h1&gt;
     &lt;/li&gt;
   <strong>{{/each}}</strong>
-  &lt;li&gt;{{#linkTo "tasks.new"}}New task...{{/linkTo}}&lt;/li&gt;
+  &lt;li&gt;{{#link-to "tasks.new"}}New task...{{/link-to}}&lt;/li&gt;
 &lt;/ul&gt;
 </code></pre>
   </section>
@@ -315,6 +325,7 @@ var TasksCtrl = ['$scope', <strong>'Task'</strong>, function($scope, <strong>Tas
     <ul>
       <li>Decorate the model with display logic</li>
       <li>Templates are connected to controllers</li>
+      <li>Convention over Configuration</li>
       <li>Default implementation</li>
     </ul>
   </section>
@@ -322,24 +333,30 @@ var TasksCtrl = ['$scope', <strong>'Task'</strong>, function($scope, <strong>Tas
     <h1>Model</h1>
     <ul>
       <li>Plain JavaScript Objects</li>
-      <li>ActiveRecord like with $resource</li>
-    </ul>
-  </section>
-  <section id="model-angular-scope" class="angular">
-    <h1>Scope</h1>
-    <ul>
-      <li>Glue between controller and view</li>
-      <li>Refers to the model</li>
-      <li>Responsible for two-way data binding</li>
+      <!--li>ActiveRecord like with $resource</li-->
+      <li>
+        Scope
+        <ul>
+          <li>Glue between controller and view</li>
+          <li>Refers to the model</li>
+          <li>Responsible for two-way data binding</li>
+        </ul>
+      </li>
     </ul>
   </section>
   <section id="view-angular" class="angular">
     <h1>View</h1>
     <ul>
       <li>DOM templating</li>
-      <li>Transparent for the user</li>
+      <li>Declarative approach</li>
       <li>Automatically compiled</li>
-      <li>May seem a bit more rigid</li>
+      <li>
+<pre><code class="html">
+&lt;button ng-click="action()"&gt;Action&lt;/button&gt;
+
+&lt;button onclick="action();"&gt;Action&lt;/button&gt;
+</code></pre>
+      <!--li>May seem a bit more rigid</li-->
     </ul>
   </section>
   <section id="view-angular-code" class="angular">
@@ -396,7 +413,7 @@ var TasksCtrl = ['$scope', <strong>'Task'</strong>, function($scope, <strong>Tas
     <h1>Binding</h1>
     <ul>
       <li>Connecting object properties</li>
-      <li>Data synchronization between data and view</li>
+      <li>Synchronization between data and view</li>
     </ul>
   </section>
   <section id="binding-demo">
@@ -485,7 +502,7 @@ var TasksCtrl = ['$scope', <strong>'Task'</strong>, function($scope, <strong>Tas
 &lt;/ul&gt;
 </code></pre>
   </section>
-  <section id="binding-ember-code" class="ember">
+  <!--section id="binding-ember-code" class="ember">
     <div>
 <pre><code class="javascript">var AppView = Ember.View.extend({
   template: $('#ember-binding-template').html()
@@ -495,7 +512,7 @@ var TasksCtrl = ['$scope', <strong>'Task'</strong>, function($scope, <strong>Tas
 &lt;div&gt;Hello {{name}}!&lt;/div&gt;
 </code></pre>
     </div>
-  </section>
+  </section-->
   <section id="binding-angular" class="angular">
     <h1>Binding</h1>
     <ul>
@@ -513,13 +530,13 @@ var TasksCtrl = ['$scope', <strong>'Task'</strong>, function($scope, <strong>Tas
       <li>Precisely update the DOM accordingly</li>
     </ul>
   </section>
-  <section id="binding-angular-code" class="angular">
+  <!--section id="binding-angular-code" class="angular">
 <pre><code class="xml">&lt;div ng-app&gt;
   &lt;div&gt;&lt;input type="text" ng-model="name" /&gt;&lt;/div&gt;
   &lt;div&gt;Hello {{name}}!&lt;/div&gt;
 &lt;/div&gt;
 </code></pre>
-  </section>
+  </section-->
   <section id="binding-conclusion">
     <h1>Binding</h1>
     <ul>
@@ -536,7 +553,7 @@ var TasksCtrl = ['$scope', <strong>'Task'</strong>, function($scope, <strong>Tas
   <section id="routing-intro">
     <h1>Routing &amp; Deep Linking</h1>
     <p>
-      Associate an URL to a particular application state<br />
+      Associate an URL to a particular app state<br />
       Managing Single Page Application layouts?
     </p>
     <dl>
@@ -631,30 +648,32 @@ var TasksCtrl = ['$scope', <strong>'Task'</strong>, function($scope, <strong>Tas
 <pre><code class="xml">&lt;div class="tasks"&gt;
   &lt;ul&gt;
     {{#each task in model}}
-      &lt;li {{bindAttr class="task.active:active"}}&gt;
+      &lt;li {{bind-attr class="task.active:active"}}&gt;
         &lt;h1&gt;
-          {{#linkTo "tasks.show" task}}
+          {{#link-to "tasks.show" task}}
             {{task.title}}
-          {{/linkTo}}
+          {{/link-to}}
         &lt;/h1&gt;
       &lt;/li&gt;
     {{/each}}
-    &lt;li&gt;{{#linkTo "tasks.new"}}New task...{{/linkTo}}&lt;/li&gt;
+    &lt;li&gt;{{#link-to "tasks.new"}}New task...{{/link-to}}&lt;/li&gt;
   &lt;/ul&gt;
 &lt;/div&gt;
 <strong>{{outlet}}</strong>
 </code></pre>
   </section>
-  <section id="routing-ember-code-3" class="ember">
+  <!--section id="routing-ember-code-3" class="ember">
 <pre><code class="javascript">Tasks.TasksNewRoute = Ember.Route.extend({
   <strong>renderTemplate:</strong> function() {
     this.render('tasks/form');
   },
   <strong>model:</strong> function() {
-    return Tasks.Task.createRecord({
+    var task = this.get('store').createRecord('task', {
       title: 'New Task',
       description: 'Desc'
     });
+    task.save();
+    return task;
   },
   <strong>setupController:</strong> function(controller, task) {
     Tasks.Task.active(task);
@@ -662,15 +681,13 @@ var TasksCtrl = ['$scope', <strong>'Task'</strong>, function($scope, <strong>Tas
   },
   <strong>events:</strong> {
     save: function(task) {
-      task.one('didCreate', this, function() {
-        this.transitionTo('tasks.show', task);
-      });
-      this.get('store').commit();
+      task.save();
+      return this.transitionTo('tasks.show', task);
     }
   }
 });
 </code></pre>
-  </section>
+  </section-->
   <section id="routing-angular" class="angular">
     <h1>Routing</h1>
     <ul>
@@ -758,16 +775,18 @@ otherwise({redirectTo: '/tasks'});
       <li>ActiveRecord like</li>
       <li>Mapping, Relationships &amp; Transactions!</li>
       <li>Different adapters</li>
-      <li>Lifecycle events</li>
-      <li>Still in active development</li>
+      <li><a href="http://jsonapi.org/" title="JSON API">JSON API Specification</a></li>
+      <li>Stabilizing (beta 2)</li>
     </ul>
   </section>
   <section id="api-ember-code" class="ember">
 <pre><code class="javascript">save: function(task) {
-  <strong>task.one('didCreate', this, function() {</strong>
-    this.transitionTo('tasks.show', task);
+  var self = this;
+  task.<strong>save()</strong>.<strong>then</strong>(function() {
+    self.transitionTo('tasks.show', task);
+  }, function() {
+    alert('An error occured...');
   });
-  <strong>this.get('store').commit();</strong>
 }
 </code></pre>
   </section>
@@ -836,10 +855,10 @@ var TaskNewCtrl = ['$scope', '$location', <strong>'Task'</strong>,
   <section id="components-ember" class="ember">
     <h1>Components</h1>
     <ul>
-      <li>Components are just views</li>
-      <li>Nesting via the view helper</li>
+      <li>Reusable views</li>
+      <li>Easy creation of custom components</li>
+      <li>Automatically registers Handlebars plugin</li>
       <li>Built-in components</li>
-      <li>Dedicated handlebars plugins</li>
     </ul>
   </section>
   <section id="components-ember-code" class="ember">
@@ -939,7 +958,7 @@ var TaskNewCtrl = ['$scope', '$location', <strong>'Task'</strong>,
       <li>Nice API documentation and guides</li>
       <li>Great Stack Overflow community</li>
       <li>Ember Chrome Extension</li>
-      <li>Lack of full tutorials</li>
+      <li>New full tutorial!</li>
       <li>Some outdated resources</li>
     </ul>
   </section>
@@ -950,6 +969,31 @@ var TaskNewCtrl = ['$scope', '$location', <strong>'Task'</strong>,
       <li>Rich documentation, guides and tutorials</li>
       <li>Batarang: Angular extension for Chrome</li>
       <li>AngularUI</li>
+    </ul>
+  </section>
+
+  <section id="future">
+    <h1>The future</h1>
+  </section>
+  <section id="future-backbone" class="backbone">
+    <h1>The future</h1>
+    <p>"Keep providing the minimal set of primitives that are useful when building web applications with JavaScript."</p>
+  </section>
+  <section id="future-ember" class="ember">
+    <h1>The future</h1>
+    <ul>
+      <li>Stabilize and release Ember Data</li>
+      <li>Getting rid of &lt;script/&gt; tags</li>
+      <li>ES6 features (modules, Object.observe)</li>
+      <li>Web Components</li>
+    </ul>
+  </section>
+  <section id="future-angular" class="angular">
+    <h1>The future</h1>
+    <ul>
+      <li>Embrace standards</li>
+      <li>ES6 features (modules, Object.observe)</li>
+      <li>Web Components with Polymer</li>
     </ul>
   </section>
 
